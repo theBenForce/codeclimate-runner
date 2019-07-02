@@ -5,7 +5,5 @@ RUN apk update && \
   apk add --no-cache \
   bash
 
-RUN echo "export PATH=\"\$PATH:/usr/src/app/bin\"" > /root/.bashrc
-
-RUN /bin/bash
-ENTRYPOINT [ "/bin/bash" ]
+ENV PATH="/usr/src/app/bin:${PATH}"
+ENTRYPOINT [ "/bin/bash", "-l", "-c" ]
